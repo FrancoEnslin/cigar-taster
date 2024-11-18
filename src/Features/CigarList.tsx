@@ -78,7 +78,7 @@ export const CigarList: React.FC<CigarListProps> = ({ cigars }) => {
                 <Card key={index} className="shadow-md">
                     <CardHeader>
                         <CardTitle>{cigar.name}</CardTitle>
-                        <CardDescription>Price: ${cigar.price.toFixed(2)}</CardDescription>
+                        <CardDescription>Price: R{cigar.price.toFixed(2)}</CardDescription>
                     </CardHeader>
                     <CardContent>
                         <p>Taste Rating: {cigar.taste}/10</p>

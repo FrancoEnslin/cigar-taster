@@ -4,7 +4,7 @@ export const Header = () => {
   return (
     <header className="bg-gray-800 text-white py-4">
       <div className="container mx-auto flex justify-between items-center">
-        <h1 className="text-xl font-bold">Cigar Taste Rating</h1>
+        <h1 className="text-xl font-bold ml-10">Cigar Taste Rating</h1>
         <nav>
           <Button variant="ghost">Home</Button>
           <Button variant="ghost">About</Button>

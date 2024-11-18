@@ -105,12 +105,12 @@ interface AddCigarProps {
 
 export const AddCigar: React.FC<AddCigarProps> = ({ cigars, setCigars }) => {
     const [isDialogOpen, setIsDialogOpen] = useState(false);
-    const [newCigar, setNewCigar] = useState<Cigar>({ name: "", price: 0, taste: 5 });
+    const [newCigar, setNewCigar] = useState<Cigar>({ name: "", price: 0, taste: 0 });
 
     const handleAddCigar = () => {
         const updatedCigars = [...cigars, newCigar];
         setCigars(updatedCigars); // Update shared state
-        setNewCigar({ name: "", price: 0, taste: 5 });
+        setNewCigar({ name: "", price: 0, taste: 0 });
         setIsDialogOpen(false);
     };
 
