@@ -91,11 +91,13 @@
 
 import React, { useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogFooter, DialogTitle } from "@/components/ui/dialog";
+import { RatingModal } from "./RatingModal";
 
 interface Cigar {
     name: string;
     price: number;
     taste: number;
+    desc: string;
 }
 
 interface AddCigarProps {
@@ -105,12 +107,12 @@ interface AddCigarProps {
 
 export const AddCigar: React.FC<AddCigarProps> = ({ cigars, setCigars }) => {
     const [isDialogOpen, setIsDialogOpen] = useState(false);
-    const [newCigar, setNewCigar] = useState<Cigar>({ name: "", price: 0, taste: 0 });
+    const [newCigar, setNewCigar] = useState<Cigar>({ name: "", price: 0, taste: 0, desc: '' });
 
     const handleAddCigar = () => {
         const updatedCigars = [...cigars, newCigar];
         setCigars(updatedCigars); // Update shared state
-        setNewCigar({ name: "", price: 0, taste: 0 });
+        setNewCigar({ name: "", price: 0, taste: 0, desc: '' });
         setIsDialogOpen(false);
     };
 
@@ -161,11 +163,24 @@ export const AddCigar: React.FC<AddCigarProps> = ({ cigars, setCigars }) => {
                                 placeholder="Taste rating (1-10)"
                             />
                         </div>
+                        <div>
+                            {/* <RatingModal isOpen={isDialogOpen} onClose={setIsDialogOpen(false)}/> */}
+                        </div>
+                        <div>
+                            <label className="block text-sm font-medium">Description</label>
+                            <input
+                                type="text"
+                                value={newCigar.desc}
+                                onChange={(e) => setNewCigar({ ...newCigar, desc: e.target.value })}
+                                className="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring focus:ring-blue-500"
+                                placeholder="Description"
+                            />
+                        </div>
                     </div>
                     <DialogFooter>
                         <button
                             onClick={handleAddCigar}
-                            className="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700"
+                            className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-green-700"
                         >
                             Save
                         </button>

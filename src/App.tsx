@@ -197,18 +197,15 @@ interface Cigar {
   name: string;
   price: number;
   taste: number;
+  desc: string
 }
 
 function App() {
-  const [cigars, setCigars] = useState<Cigar[]>([]);
-
-  // Load cigars from localStorage on app load
-  useEffect(() => {
+  const [cigars, setCigars] = useState<Cigar[]>(() => {
+    // Load cigars from localStorage on initial render
     const storedCigars = localStorage.getItem("cigars");
-    if (storedCigars) {
-      setCigars(JSON.parse(storedCigars));
-    }
-  }, []);
+    return storedCigars ? JSON.parse(storedCigars) : [];
+  });
 
   // Update localStorage whenever cigars state changes
   useEffect(() => {
@@ -218,14 +215,14 @@ function App() {
   return (
     <div className="flex flex-col min-h-screen w-full ">
       <Header />
-      <main className="flex-grow flex flex-col items-center justify-center">
+      <main className="flex-grow flex flex-col items-center mt-10">
         <AddCigar cigars={cigars} setCigars={setCigars} />
-        <CigarList cigars={cigars} />
+        <CigarList cigars={cigars} setCigars={setCigars} />
       </main>
       <Footer />
     </div>
   );
-
 }
+
 
 export default App;
