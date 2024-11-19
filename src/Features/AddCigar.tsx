@@ -91,7 +91,7 @@
 
 import React, { useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogFooter, DialogTitle } from "@/components/ui/dialog";
-import { RatingModal } from "./RatingModal";
+// import { RatingModal } from "./RatingModal";
 
 interface Cigar {
     name: string;
